@@ -144,9 +144,15 @@ function checkAnswer(){
         fizKine+=(parseInt(choices[i].value));
         console.log("fizKine = "+fizKine);
       }
+      uploadQuestion();
     }
   }
 }
 
+function uploadQuestion(){
+  console.log("uploadQuestion() is working");
+  position++;
+  loadQuestion();
+}
 
 window.addEventListener("load", loadQuestion);
