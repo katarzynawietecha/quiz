@@ -62,7 +62,6 @@ function loadQuestion(){
     test.style.display = "none";
     testStatus.style.display = "none";
     beginButton.addEventListener('click', function(){
-       console.log("beginButton");
        test.style.display = "block";
        testStatus.style.display = "block";
        beginButton.style.display = "none";
@@ -106,51 +105,42 @@ function loadQuestion(){
 }
 
 var choices = document.getElementsByName("choices");
-console.log(choices);
 
 //Event on button "next"
 function checkAnswer(){
-  console.log("Next onclick!");
-
+  var isChecked = false;
   for(var i=0; i<choices.length; i++){
     if(choices[i].checked){
       var choice = choices[i].value;
       var q = position+1;
-      console.log("In question "+q+" user selected "+choice);
-
+      isChecked = true;
       //Add:
       if((q==2)||(q==10)||(q==13)||(q==15)||(q==36)){
         lingw+=(parseInt(choices[i].value));
-        console.log("lingw ="+lingw);
       }else if((q==1)||(q==18)||(q==24)||(q==27)||(q==34)){
         logMat+=(parseInt(choices[i].value));
-        console.log("logMat = "+logMat);
       }else if((q==6)||(q==17)||(q==26)||(q==31)||(q==38)){
         przyr+=(parseInt(choices[i].value));
-        console.log("przyr = "+przyr);
       }else if((q==9)||(q==19)||(q==28)||(q==33)||(q==37)){
         wizPrze+=(parseInt(choices[i].value));
-        console.log("wizPrze = "+wizPrze);
       }else if((q==3)||(q==11)||(q==22)||(q==30)||(q==39)){
         muzycz+=(parseInt(choices[i].value));
-        console.log("muzycz = "+muzycz);
       }else if((q==4)||(q==16)||(q==25)||(q==29)||(q==35)){
         interp+=(parseInt(choices[i].value));
-        console.log("interp = "+interp);
       }else if((q==7)||(q==12)||(q==20)||(q==23)||(q==40)){
         intrap+=(parseInt(choices[i].value));
-        console.log("intrap ="+intrap);
       }else if((q==5)||(q==8)||(q==14)||(q==21)||(q==32)){
         fizKine+=(parseInt(choices[i].value));
-        console.log("fizKine = "+fizKine);
       }
       uploadQuestion();
     }
   }
+  if(!isChecked){
+    alert("Aby przejść dalej zaznacz którąś odpowiedź.");
+  }
 }
 
 function uploadQuestion(){
-  console.log("uploadQuestion() is working");
   position++;
   loadQuestion();
 }
