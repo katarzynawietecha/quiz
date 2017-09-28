@@ -7,7 +7,7 @@ This quiz is a test of professional predisposition (in Polish). The test will he
 
 **Inspiration**
 
-This knowledge may be a valuable suggestion especially for young people. The user will learn what kind of work environments and occupations suit him best.
+My quiz is based on test published on website of general secondary school in Węgorzewo. This knowledge may be a valuable suggestion especially for young people. The user will learn what kind of work environments and occupations suit him best.
 
 
 **License**

@@ -69,15 +69,39 @@ function loadQuestion(){
   }
   //Finish, score
   if(position >= questions.length){
-    testStatus.innerHTML = "Test zakończony";
-    test.innerHTML = "<ul>Wyniki: <li>Inteligencja lingwistyczna "+lingw+" pkt.</li>"+
-                                  "<li>Inteligencja logiczno-matematyczna "+logMat+" pkt.</li>"+
-                                  "<li>Inteligencja przyrodnicza "+przyr+" pkt.</li>"+
-                                  "<li>Inteligencja wizalno-przestrzenna "+wizPrze+" pkt.</li>"+
-                                  "<li>Inteligencja muzyczna "+muzycz+" pkt.</li>"+
-                                  "<li>Inteligencja interpersonalna "+interp+" pkt.</li>"+
-                                  "<li>Inteligencja intrapersonalna "+intrap+" pkt.</li>"+
-                                  "<li>Inteligencja fizyczno-kinestetyczna "+fizKine+" pkt.</li></ul>";
+    testStatus.innerHTML = "Twój wynik";
+    test.innerHTML = "(kliknij w wybrany rodzaj inteligencji, aby zobaczyc opis)"+
+                        "<dl>"+
+                          "<dt>Inteligencja lingwistyczna - "+lingw+" pkt.</dt>"+
+                            "<dd><span>Cechy charakterystyczne:</span><br>łatwość operowania słowem (pisanym, mówionym), umiejętność przemawiania i prezentowania własnego zdania i przekonań, zamiłowanie do książek, duży zasób słownictwa, wrażliwość na niuanse językowe.<br><span>Praca:</span><br>dziennikarz, tłumacz, pisarz, poeta, mówca, polityk, redaktor.<br><span>Życie codzienne:</span>pisz, czytaj, wstąp do klubu dyskusyjnego, załóż gazetkę szkolną, bierz udział w debatach</dd>"+
+                          "<dt>Inteligencja logiczno-matematyczna - "+logMat+" pkt.</dt>"+
+                            "<dd><span>Cechy charakterystyczne:</span><br>umiejętność liczenia, dokonywania operacji na liczbach, dobrze rozwinięte myślenie abstrakcyjne, łatwość rozwiązywania zagadek logicznych, kryminalnych, dostrzeganie zależności przyczynowo-skutkowych, przedstawianie faktów w sposób uporządkowany.<br><span>Praca:</span><br>ekonomista, księgowy, informatyk, fizyk, astronom, detektyw, myśliwy, adwokat, sędzia.<br><span>Życie codzienne:</span><br>rób plany działania, rozwiązuj zadania metodyczne, łącz nową wiedzę z dotychczas zdobytą.</dd>"+
+                          "<dt>Inteligencja przyrodnicza - "+przyr+" pkt.</dt>"+
+                            "<dd><span>Cechy charakterystyczne:</span><br>zainteresowanie naturą i zjawiskami w niej zachodzącymi, zamiłowanie do roślin i zwierząt, wrażliwość ekologiczna.<br><span>Praca:</span><br>biolog, zoolog, ekolog, rolnik, sadownik, weterynarz.<br><span>Życie codzienne:</span><br>spędzaj jak najwięcej czasu na łonie natury, bierz udział w akcjach ekologicznych, zapisz się na wolontariat w schronisku dla zwierząt, uprawiaj rośliny.</dd>"+
+                          "<dt>Inteligencja wizalno-przestrzenna - "+wizPrze+" pkt.</dt>"+
+                            "<dd><span>Cechy charakterystyczne:</span><br>myślenie za pomocą obrazów, łatwość czytania map, wykresów i schematów, bogata wyobraźnia, całościowe postrzeganie przestrzeni, dobre wyczucie kształtu, koloru, przestrzeni.<br><span>Praca:</span><br>artysta, architekt, projektant, nawigator, rzewodnik, pilot.<br><span>Życie codzienne:</span><br>ucząc się, twórz mapy myśli, używaj kolorów, podkreśleń, zestawień, poznaj techniki grafiki komputerowej, rozwijaj wyobraźnię coraz bardziej ubarwiając własne myśli, nadając im kolor, smak, zapach.</dd>"+
+                          "<dt>Inteligencja muzyczna - "+muzycz+" pkt.</dt>"+
+                            "<dd><span>Cechy charakterystyczne:</span><br>wrażliwość na muzykę i dźwięki oraz ich ładunek emocjonalny, łatwość zapamiętywania treści mających podkład muzyczny, wrażliwość na tembr głosu rozmówcy.<br><span>Praca:</span><br>kompozytor, piosenkarz, dyrygent, muzyk, krytyk/dziennikarz muzyczny, stroiciel instrumentów.<br><span>Życie codzienne:</span><br>słuchaj jak najwięcej muzyki, ucz się przy muzyce (najlepiej barokowej), ucząc się wierszy, czy wyliczanek, znajdź dla nich rytm, wpływaj na swój nastrój poprzez muzykę (relaksacja, wyładowanie nadmiaru emocji czy wytworzenie pozytywnego nastroju).</dd>"+
+                          "<dt>Inteligencja interpersonalna - "+interp+" pkt.</dt>"+
+                            "<dd><span>Cechy charakterystyczne:</span><br>chęć przebywania z ludźmi, łatwość nawiązywania kontaktów i zawierania przyjaźni, ekstrawersja, predyspozycje do pracy w grupie.<br><span>Praca:</span><br>wymagająca kontaktów z ludźmi: sprzedawca, mediator, psycholog, nauczyciel, menadżer.<br><span>Życie codzienne:</span><br>spędzaj jak najwięcej czasu z innymi, ucz się w grupie, ćwicz umiejętności komunikacji interpersonalnej, zgłębiaj tajniki psychologii i socjologii.</dd>"+
+                          "<dt>Inteligencja intrapersonalna - "+intrap+" pkt.</dt>"+
+                            "<dd><span>Cechy charakterystyczne:</span><br>umiejętność planowania, świadomość własnych potrzeb i celów, uczenie się na własnych błędach, wgląd w siebie, łatwość nazywania i rozpoznawania własnych stanów emocjonalnych.<br><span>Praca:</span><br>poeta, psycholog, terapeuta, przywódca duchowy, filozof, teolog.<br><span>Życie codzienne:</span><br>obserwuj i nazywaj swoje stany emocjonalne, ucz się w samotności i ciszy, pielęgnuj własną niezależność.</dd>"+
+                          "<dt>Inteligencja fizyczno-kinestetyczna - "+fizKine+" pkt.</dt>"+
+                            "<dd><span>Cechy charakterystyczne:</span><br>duża potrzeba ruchu, zamiłowanie do ćwiczeń fizycznych, niepokój ruchowy, tendencja do manipulowania przedmiotami, duża precyzja ruchów, dobry refleks.<br><span>Praca:</span><br>sportowiec, akrobata, aktor, tancerz, chirurg, dentysta, modelarz, zegarmistrz, osoby pracujące na wysokościach.<br><span>Życie codzienne:</span><br>ucz się, chodząc lub udając teatr, zapisz się na zajęcia sportowe, rozwijaj sprawność manualną (modelarstwo, haftowanie, robienie biżuterii).</dd>"+
+                        "</dl>";
+
+    var dt = document.querySelectorAll('dt');
+    dt.forEach(function(element){
+      element.addEventListener("click", function(){
+        var dd = element.nextSibling;
+        if(dd.style.display === "block"){
+          dd.style.display = "none"
+        }else{
+          dd.style.display = "block";
+        }
+      })
+    })
+
     return false;
   }
 
