@@ -51,6 +51,15 @@ section {
   margin: 0 auto;
 }
 
+dt {
+  width: 100%;
+  background-color: #f26752;
+  text-align: left;
+}
+
+dd {
+  display: none;
+}
 
 /*Footer*/
 footer {
