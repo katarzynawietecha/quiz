@@ -55,7 +55,20 @@ var questions = [
 // /*40*/  ["Analizuję własne błędy i wyciągam z nich wnioski na przyszłość.", 0, 1, 2, 3, 4, 5]
 ]
 
+//Navigation
+var navElements = document.querySelectorAll("nav li");
+navElements.forEach(function(element){
+  element.addEventListener("click", function(){
+    var nestedNavDiv = element.children[0];
+    if(nestedNavDiv.style.display === "block"){
+      nestedNavDiv.style.display = "none";
+    }else{
+      nestedNavDiv.style.display = "block";
+    }
+  })
+})
 
+//Section of test
 function loadQuestion(){
   //Start
   if (position == 0){
@@ -95,7 +108,7 @@ function loadQuestion(){
       element.addEventListener("click", function(){
         var dd = element.nextSibling;
         if(dd.style.display === "block"){
-          dd.style.display = "none"
+          dd.style.display = "none";
         }else{
           dd.style.display = "block";
         }
