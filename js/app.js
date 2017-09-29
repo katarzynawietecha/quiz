@@ -74,10 +74,11 @@ function loadQuestion(){
   if (position == 0){
     test.style.display = "none";
     testStatus.style.display = "none";
+    var instruction = document.getElementById("instruction");
     beginButton.addEventListener('click', function(){
        test.style.display = "block";
        testStatus.style.display = "block";
-       beginButton.style.display = "none";
+       instruction.style.display = "none";
      });
   }
   //Finish, score
@@ -86,7 +87,7 @@ function loadQuestion(){
     test.innerHTML = "(kliknij w wybrany rodzaj inteligencji, aby zobaczyc opis)"+
                         "<dl>"+
                           "<dt>Inteligencja lingwistyczna - "+lingw+" pkt.</dt>"+
-                            "<dd><span>Cechy charakterystyczne:</span><br>łatwość operowania słowem (pisanym, mówionym), umiejętność przemawiania i prezentowania własnego zdania i przekonań, zamiłowanie do książek, duży zasób słownictwa, wrażliwość na niuanse językowe.<br><span>Praca:</span><br>dziennikarz, tłumacz, pisarz, poeta, mówca, polityk, redaktor.<br><span>Życie codzienne:</span>pisz, czytaj, wstąp do klubu dyskusyjnego, załóż gazetkę szkolną, bierz udział w debatach</dd>"+
+                            "<dd><span>Cechy charakterystyczne:</span><br>łatwość operowania słowem (pisanym, mówionym), umiejętność przemawiania i prezentowania własnego zdania i przekonań, zamiłowanie do książek, duży zasób słownictwa, wrażliwość na niuanse językowe.<br><span>Praca:</span><br>dziennikarz, tłumacz, pisarz, poeta, mówca, polityk, redaktor.<br><span>Życie codzienne:</span><br>pisz, czytaj, wstąp do klubu dyskusyjnego, załóż gazetkę szkolną, bierz udział w debatach</dd>"+
                           "<dt>Inteligencja logiczno-matematyczna - "+logMat+" pkt.</dt>"+
                             "<dd><span>Cechy charakterystyczne:</span><br>umiejętność liczenia, dokonywania operacji na liczbach, dobrze rozwinięte myślenie abstrakcyjne, łatwość rozwiązywania zagadek logicznych, kryminalnych, dostrzeganie zależności przyczynowo-skutkowych, przedstawianie faktów w sposób uporządkowany.<br><span>Praca:</span><br>ekonomista, księgowy, informatyk, fizyk, astronom, detektyw, myśliwy, adwokat, sędzia.<br><span>Życie codzienne:</span><br>rób plany działania, rozwiązuj zadania metodyczne, łącz nową wiedzę z dotychczas zdobytą.</dd>"+
                           "<dt>Inteligencja przyrodnicza - "+przyr+" pkt.</dt>"+
@@ -132,12 +133,12 @@ function loadQuestion(){
 
   //Body of test
   test.innerHTML = "<h3>"+question+"</h3>"+
-      "<br><input type='radio' name='choices' value='0'>"+optionA+
-      "<br><input type='radio' name='choices' value='1'>"+optionB+
-      "<br><input type='radio' name='choices' value='2'>"+optionC+
-      "<br><input type='radio' name='choices' value='3'>"+optionD+
-      "<br><input type='radio' name='choices' value='4'>"+optionE+
-      "<br><input type='radio' name='choices' value='5'>"+optionF+
+      "<input type='radio' name='choices' value='0'>"+optionA+
+      "<span>&ensp;</span><input type='radio' name='choices' value='1'>"+optionB+
+      "<span>&ensp;</span><input type='radio' name='choices' value='2'>"+optionC+
+      "<span>&ensp;</span><input type='radio' name='choices' value='3'>"+optionD+
+      "<span>&ensp;</span><input type='radio' name='choices' value='4'>"+optionE+
+      "<span>&ensp;</span><input type='radio' name='choices' value='5'>"+optionF+
       "<br><button onclick='checkAnswer()'>Dalej</button>";
 }
 
@@ -173,7 +174,7 @@ function checkAnswer(){
     }
   }
   if(!isChecked){
-    alert("Aby przejść dalej zaznacz którąś odpowiedź.");
+    alert("Aby przejść dalej musisz wybrać jedną z odpowiedzi!");
   }
 }
 
