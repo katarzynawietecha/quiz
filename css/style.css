@@ -80,7 +80,7 @@ nav li div {
 /*Section*/
 section {
   width: 100%;
-  height: 550px;
+  min-height: 550px;
   padding: 5px;
 }
 
@@ -169,6 +169,24 @@ button {
   font-weight: bold;
   font-size: 14px;
   cursor: pointer;
+}
+
+/*Form*/
+form {
+  height: 100%;
+  width: 400px;
+  margin: 0 auto;
+}
+
+form .name, .email, .message {
+  width: 350px;
+  margin: 0 auto;
+}
+
+form input, textarea {
+  width: 350px;
+  margin: 0 auto;
+  cursor: default;
 }
 
 /*Footer*/
