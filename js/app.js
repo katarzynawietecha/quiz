@@ -56,17 +56,54 @@ var questions = [
 ]
 
 //Navigation
-var navElements = document.querySelectorAll("nav li");
-navElements.forEach(function(element){
-  element.addEventListener("click", function(){
-    var nestedNavDiv = element.children[0];
-    if(nestedNavDiv.style.display === "block"){
-      nestedNavDiv.style.display = "none";
-    }else{
-      nestedNavDiv.style.display = "block";
-    }
-  })
-})
+var page1 = document.querySelector(".page1");
+var page1Div = document.getElementById("page1-div");
+page1Div.style.display = "block";
+var page2Div = document.getElementById("page2-div");
+page2Div.style.display = "none";
+var page3Div = document.getElementById("page3-div");
+page3Div.style.display = "none";
+var page4Div = document.getElementById("page4-div");
+page4Div.style.display = "none";
+
+page1.addEventListener('click', function(){
+  if(page1Div.style.display == "none"){
+    page1Div.style.display = "block";
+    page2Div.style.display = "none";
+    page3Div.style.display = "none";
+    page4Div.style.display = "none";
+  }
+});
+
+var page2 = document.querySelector(".page2");
+page2.addEventListener('click', function(){
+  if(page2Div.style.display == "none"){
+    page2Div.style.display = "block";
+    page1Div.style.display = "none";
+    page3Div.style.display = "none";
+    page4Div.style.display = "none";
+  }
+});
+
+var page3 = document.querySelector(".page3");
+page3.addEventListener('click', function(){
+  if(page3Div.style.display == "none"){
+    page3Div.style.display = "block";
+    page1Div.style.display = "none";
+    page2Div.style.display = "none";
+    page4Div.style.display = "none";
+  }
+});
+
+var page4 = document.querySelector(".page4");
+page4.addEventListener('click', function(){
+  if(page4Div.style.display == "none"){
+    page4Div.style.display = "block";
+    page1Div.style.display = "none";
+    page2Div.style.display = "none";
+    page3Div.style.display = "none";
+  }
+});
 
 //Section of test
 function loadQuestion(){
