@@ -174,19 +174,32 @@ button {
 /*Form*/
 form {
   height: 100%;
+  width: 300px;
+  margin: 0 auto;
+}
+
+form label, .name, .email, .message {
+  width: 300px;
+  margin: 0 auto;
+}
+
+form input {
+  cursor: text;
+}
+
+textarea {
   width: 400px;
   margin: 0 auto;
+  cursor: text;
+  height: 80px;
 }
 
-form .name, .email, .message {
-  width: 350px;
-  margin: 0 auto;
+.error-message {
+  color: red;
 }
 
-form input, textarea {
-  width: 350px;
-  margin: 0 auto;
-  cursor: default;
+.success-message {
+  color: green;
 }
 
 /*Footer*/

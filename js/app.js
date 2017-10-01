@@ -220,4 +220,48 @@ function uploadQuestion(){
   loadQuestion();
 }
 
+//Form checking
+var form = document.querySelector("form");
+var nameElem = form.elements.name;
+var emailElem = form.elements.email;
+var messageElem = form.elements.message;
+var errorMsg = form.querySelector('.error-message');
+var successMsg = form.querySelector('.success-message');
+
+form.addEventListener('submit',function(event){
+    event.preventDefault();
+    var errorText = '';
+
+    if(nameElem.value.trim().length <= 2 ){
+        nameElem.classList.add('box-error');
+        errorText += 'Twoje imię jest za krótkie<br>';
+    }else{
+        nameElem.classList.remove('box-error');
+    }
+
+    if(emailElem.value.indexOf('@') == -1){
+        emailElem.classList.add('box-error');
+        errorText += 'Email musi posiadać znak @<br>';
+    }else{
+        emailElem.classList.remove('box-error');
+    }
+
+    if(messageElem.value.trim().length <= 10 ){
+        nameElem.classList.add('box-error');
+        errorText += 'Nie wpisano wiadomości lub jest za którka<br>';
+    }else{
+        messageElem.classList.remove('box-error');
+    }
+
+    errorMsg.innerHTML = errorText;
+
+    if(errorMsg.innerHTML.trim().length == 0){
+        successMsg.innerText = 'Formularz wysłano';
+        form.submit();
+    }
+
+})
+
+
+
 window.addEventListener("load", loadQuestion);
