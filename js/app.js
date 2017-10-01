@@ -3,14 +3,7 @@ var test = document.getElementById("test");
 var testStatus = document.getElementById("test-status");
 var beginButton = document.getElementById("begin");
 
-var lingw = 0;
-var logMat = 0;
-var przyr = 0;
-var wizPrze = 0;
-var muzycz = 0;
-var interp = 0;
-var intrap = 0;
-var fizKine = 0;
+var counter = 0;
 
 var questions = [
 /*1*/   ["Lubię wykonywać działania matematyczne.", 0, 1, 2, 3, 4, 5],
@@ -129,24 +122,9 @@ function loadQuestion(){
   //Finish, score
   if(position >= newQuestions.length){
     testStatus.innerHTML = "Twój wynik";
-    test.innerHTML = "(kliknij w wybrany rodzaj inteligencji, aby zobaczyc opis)"+
-                        "<dl>"+
-                          "<dt>Inteligencja lingwistyczna - "+lingw+" pkt.</dt>"+
+    test.innerHTML = "<dl>"+
+                          "<dt>Masz "+counter+" punktów.</dt>"+
                             "<dd><span>Cechy charakterystyczne:</span><br>łatwość operowania słowem (pisanym, mówionym), umiejętność przemawiania i prezentowania własnego zdania i przekonań, zamiłowanie do książek, duży zasób słownictwa, wrażliwość na niuanse językowe.<br><span>Praca:</span><br>dziennikarz, tłumacz, pisarz, poeta, mówca, polityk, redaktor.<br><span>Życie codzienne:</span><br>pisz, czytaj, wstąp do klubu dyskusyjnego, załóż gazetkę szkolną, bierz udział w debatach</dd>"+
-                          "<dt>Inteligencja logiczno-matematyczna - "+logMat+" pkt.</dt>"+
-                            "<dd><span>Cechy charakterystyczne:</span><br>umiejętność liczenia, dokonywania operacji na liczbach, dobrze rozwinięte myślenie abstrakcyjne, łatwość rozwiązywania zagadek logicznych, kryminalnych, dostrzeganie zależności przyczynowo-skutkowych, przedstawianie faktów w sposób uporządkowany.<br><span>Praca:</span><br>ekonomista, księgowy, informatyk, fizyk, astronom, detektyw, myśliwy, adwokat, sędzia.<br><span>Życie codzienne:</span><br>rób plany działania, rozwiązuj zadania metodyczne, łącz nową wiedzę z dotychczas zdobytą.</dd>"+
-                          "<dt>Inteligencja przyrodnicza - "+przyr+" pkt.</dt>"+
-                            "<dd><span>Cechy charakterystyczne:</span><br>zainteresowanie naturą i zjawiskami w niej zachodzącymi, zamiłowanie do roślin i zwierząt, wrażliwość ekologiczna.<br><span>Praca:</span><br>biolog, zoolog, ekolog, rolnik, sadownik, weterynarz.<br><span>Życie codzienne:</span><br>spędzaj jak najwięcej czasu na łonie natury, bierz udział w akcjach ekologicznych, zapisz się na wolontariat w schronisku dla zwierząt, uprawiaj rośliny.</dd>"+
-                          "<dt>Inteligencja wizalno-przestrzenna - "+wizPrze+" pkt.</dt>"+
-                            "<dd><span>Cechy charakterystyczne:</span><br>myślenie za pomocą obrazów, łatwość czytania map, wykresów i schematów, bogata wyobraźnia, całościowe postrzeganie przestrzeni, dobre wyczucie kształtu, koloru, przestrzeni.<br><span>Praca:</span><br>artysta, architekt, projektant, nawigator, rzewodnik, pilot.<br><span>Życie codzienne:</span><br>ucząc się, twórz mapy myśli, używaj kolorów, podkreśleń, zestawień, poznaj techniki grafiki komputerowej, rozwijaj wyobraźnię coraz bardziej ubarwiając własne myśli, nadając im kolor, smak, zapach.</dd>"+
-                          "<dt>Inteligencja muzyczna - "+muzycz+" pkt.</dt>"+
-                            "<dd><span>Cechy charakterystyczne:</span><br>wrażliwość na muzykę i dźwięki oraz ich ładunek emocjonalny, łatwość zapamiętywania treści mających podkład muzyczny, wrażliwość na tembr głosu rozmówcy.<br><span>Praca:</span><br>kompozytor, piosenkarz, dyrygent, muzyk, krytyk/dziennikarz muzyczny, stroiciel instrumentów.<br><span>Życie codzienne:</span><br>słuchaj jak najwięcej muzyki, ucz się przy muzyce (najlepiej barokowej), ucząc się wierszy, czy wyliczanek, znajdź dla nich rytm, wpływaj na swój nastrój poprzez muzykę (relaksacja, wyładowanie nadmiaru emocji czy wytworzenie pozytywnego nastroju).</dd>"+
-                          "<dt>Inteligencja interpersonalna - "+interp+" pkt.</dt>"+
-                            "<dd><span>Cechy charakterystyczne:</span><br>chęć przebywania z ludźmi, łatwość nawiązywania kontaktów i zawierania przyjaźni, ekstrawersja, predyspozycje do pracy w grupie.<br><span>Praca:</span><br>wymagająca kontaktów z ludźmi: sprzedawca, mediator, psycholog, nauczyciel, menadżer.<br><span>Życie codzienne:</span><br>spędzaj jak najwięcej czasu z innymi, ucz się w grupie, ćwicz umiejętności komunikacji interpersonalnej, zgłębiaj tajniki psychologii i socjologii.</dd>"+
-                          "<dt>Inteligencja intrapersonalna - "+intrap+" pkt.</dt>"+
-                            "<dd><span>Cechy charakterystyczne:</span><br>umiejętność planowania, świadomość własnych potrzeb i celów, uczenie się na własnych błędach, wgląd w siebie, łatwość nazywania i rozpoznawania własnych stanów emocjonalnych.<br><span>Praca:</span><br>poeta, psycholog, terapeuta, przywódca duchowy, filozof, teolog.<br><span>Życie codzienne:</span><br>obserwuj i nazywaj swoje stany emocjonalne, ucz się w samotności i ciszy, pielęgnuj własną niezależność.</dd>"+
-                          "<dt>Inteligencja fizyczno-kinestetyczna - "+fizKine+" pkt.</dt>"+
-                            "<dd><span>Cechy charakterystyczne:</span><br>duża potrzeba ruchu, zamiłowanie do ćwiczeń fizycznych, niepokój ruchowy, tendencja do manipulowania przedmiotami, duża precyzja ruchów, dobry refleks.<br><span>Praca:</span><br>sportowiec, akrobata, aktor, tancerz, chirurg, dentysta, modelarz, zegarmistrz, osoby pracujące na wysokościach.<br><span>Życie codzienne:</span><br>ucz się, chodząc lub udając teatr, zapisz się na zajęcia sportowe, rozwijaj sprawność manualną (modelarstwo, haftowanie, robienie biżuterii).</dd>"+
                         "</dl>";
 
     var dt = document.querySelectorAll('dt');
@@ -199,23 +177,7 @@ function checkAnswer(){
       var q = position+1;
       isChecked = true;
       //Add:
-      if((q==2)||(q==10)||(q==13)||(q==15)||(q==36)){
-        lingw+=(parseInt(choices[i].value));
-      }else if((q==1)||(q==18)||(q==24)||(q==27)||(q==34)){
-        logMat+=(parseInt(choices[i].value));
-      }else if((q==6)||(q==17)||(q==26)||(q==31)||(q==38)){
-        przyr+=(parseInt(choices[i].value));
-      }else if((q==9)||(q==19)||(q==28)||(q==33)||(q==37)){
-        wizPrze+=(parseInt(choices[i].value));
-      }else if((q==3)||(q==11)||(q==22)||(q==30)||(q==39)){
-        muzycz+=(parseInt(choices[i].value));
-      }else if((q==4)||(q==16)||(q==25)||(q==29)||(q==35)){
-        interp+=(parseInt(choices[i].value));
-      }else if((q==7)||(q==12)||(q==20)||(q==23)||(q==40)){
-        intrap+=(parseInt(choices[i].value));
-      }else if((q==5)||(q==8)||(q==14)||(q==21)||(q==32)){
-        fizKine+=(parseInt(choices[i].value));
-      }
+      counter+=(parseInt(choices[i].value));
       uploadQuestion();
     }
   }
