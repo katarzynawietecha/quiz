@@ -2,51 +2,66 @@ var position = 0;
 var test = document.getElementById("test");
 var testStatus = document.getElementById("test-status");
 var beginButton = document.getElementById("begin");
-
+var newQuestions = [];
 var counter = 0;
 
 var questions = [
-/*1*/   ["Lubię wykonywać działania matematyczne.", 0, 1, 2, 3, 4, 5],
-/*2*/   ["Dużo zapamiętuję z wykładów i wypowiedzi innych ludzi.", 0, 1, 2, 3, 4, 5],
-/*3*/   ["Uwielbiam słuchać muzyki – właściwie chciałbym ciągle to robić.", 0, 1, 2, 3, 4, 5],
-/*4*/   ["Wolę przebywać w grupie niż w samotności.", 0, 1, 2, 3, 4, 5],
-/*5*/   ["Lubię wykonywać prace wymagające dużej precyzji ruchów.", 0, 1, 2, 3, 4, 5],
-/*6*/   ["Opieka nad zwierzętami sprawia mi przyjemność.", 0, 1, 2, 3, 4, 5],
-/*7*/   ["Lubię uczyć się w ciszy i spokoju.", 0, 1, 2, 3, 4, 5],
-/*8*/   ["Mam dobry refleks.", 0, 1, 2, 3, 4, 5],
-/*9*/   ["Z łatwością przyswajam wiedzę w formie graficznej (tabela, schemat, wykres).", 0, 1, 2, 3, 4, 5],
-/*10*/  ["Potrafię długo i ciekawie opowiadać.", 0, 1, 2, 3, 4, 5],
-/*11*/  ["Muzyka wytwarza we mnie wiele emocji.", 0, 1, 2, 3, 4, 5],
-/*12*/  ["Wiem, co jest dla mnie ważne i próbuję to osiągnąć.", 0, 1, 2, 3, 4, 5],
-/*13*/  ["W wolnych chwilach sięgam po książkę.", 0, 1, 2, 3, 4, 5],
-/*14*/  ["Ucząc się często chodzę lub bawię się przedmiotami.", 0, 1, 2, 3, 4, 5],
-/*15*/  ["Łatwo przekonuję innych do własnych racji, swojego zdania.", 0, 1, 2, 3, 4, 5],
-/*16*/  ["Praca w grupie sprawia mi przyjemność.", 0, 1, 2, 3, 4, 5],
-/*17*/  ["Interesuję się sprawami związanymi z ochroną środowiska.", 0, 1, 2, 3, 4, 5],
-/*18*/  ["Lubię przedmioty ścisłe.", 0, 1, 2, 3, 4, 5],
-/*19*/  ["Lubię dekorować przestrzeń, przedmioty.", 0, 1, 2, 3, 4, 5],
-/*20*/  ["Często zastanawiam się nad motywami działania innych ludzi.", 0, 1, 2, 3, 4, 5],
-/*21*/  ["Jestem uzdolniony manualnie.", 0, 1, 2, 3, 4, 5],
-/*22*/  ["Uważam, że ścieżka dźwiękowa jest bardzo ważnym elementem filmu.", 0, 1, 2, 3, 4, 5],
-/*23*/  ["Lubię analizować swoje stany emocjonalne.", 0, 1, 2, 3, 4, 5],
-/*24*/  ["Lubię i potrafię planować swój czas.", 0, 1, 2, 3, 4, 5],
-/*25*/  ["Łatwo nawiązuję nowe znajomości.", 0, 1, 2, 3, 4, 5],
-/*26*/  ["Oglądając telewizję wybieram programy przyrodnicze.", 0, 1, 2, 3, 4, 5],
-/*27*/  ["Chętnie rozwiązuję zagadki logiczne.", 0, 1, 2, 3, 4, 5],
-/*28*/  ["Moje wyobrażenia są bardzo plastyczne.", 0, 1, 2, 3, 4, 5],
-/*29*/  ["Potrafię godzić ludzi, mediować w sporach i kłótniach.", 0, 1, 2, 3, 4, 5],
-/*30*/  ["Bardzo lubię śpiewać.", 0, 1, 2, 3, 4, 5],
-/*31*/  ["Interesują mnie zjawiska zachodzące w przyrodzie.", 0, 1, 2, 3, 4, 5],
-/*32*/  ["Znajomi często mi mówią, że nie potrafię usiedzieć na miejscu.", 0, 1, 2, 3, 4, 5],
-/*33*/  ["Łatwo zapamiętuję szczegóły obrazów.", 0, 1, 2, 3, 4, 5],
-/*34*/  ["Szukam związków między zagadnieniami, przedmiotami.", 0, 1, 2, 3, 4, 5],
-/*35*/  ["Uważam, że ludzie są fascynujący i lubię z nimi przebywać.", 0, 1, 2, 3, 4, 5],
-/*36*/  ["Lubię krzyżówki, rymowanki i inne zabawy słowne.", 0, 1, 2, 3, 4, 5],
-/*37*/  ["Dostrzegam i zapamiętuję znacznie więcej szczegółów niż inni ludzie.", 0, 1, 2, 3, 4, 5],
-/*38*/  ["Chętnie zgłębiam wiedzę z biologii, geografii, meteorologii.", 0, 1, 2, 3, 4, 5],
-/*39*/  ["Z łatwością zapamiętuję słowa piosenek i rymowanek.", 0, 1, 2, 3, 4, 5],
-/*40*/  ["Analizuję własne błędy i wyciągam z nich wnioski na przyszłość.", 0, 1, 2, 3, 4, 5]
+  /*1*/   ["Mam ochotę powiedzieć wszystkim co rzeczywiście o nich myslę.", "Nigdy, przecież wiedza co o nich myślę.", "Czasem.", "Często.", "Prawie codziennie!"],
+  /*2*/   ["Lubię szybką jazdę samochodem lub motorem.", "Nie spieszy mi się na drugi świat.", "Trochę.", "Tak, ale nie swoim:)", "Uwielbiam!"],
+  /*3*/   ["Co powiesz na samotny, wieczorny spacer po lesie?", "Nigdy w życiu!", "Wolę inne miejsca.", "Czemu nie.", "Pójdę nawet dziś!"],
+  /*4*/   ["Zwierzęta to nasi najlepsi przyjaciele.", "Ja tam z nimi nie gadam", "Czasem dostrzegam jakąś nić porozumienia", "Kot, pies tak, byle tylko nie żmija!", "Święta racja"],
+  /*5*/   ["Co myślisz o wyjeździe Fiatem 126p po frytki do McDrive.", "Kto jeszcze tym jeździ?", "Jeśli nie będzie trzeba pchać to może być.", "Pojadę, ale tylko czerownym.", "To gdzie ten maluch?"],
+  /*6*/   ["Lubisz dzieci?", "A co to jest dzieci?", "Jak śpią i jeść nie wołają..", "Cudze i z daleka - tak!", "Są urocze!"],
+  /*7*/   ["Która z podanych czynności jest dla Ciebie najważniejsza?", "Słuchanie muzyki.", "Picie porannej kawy.", "Spanie do południa.", "Spotkania z przyjaciółmi."],
+  /*8*/   ["Czego boisz się najbardziej?", "Czarnej wdowy chodzącej po mojej pościeli.", "Policji przy zjeździe z autostrady.", "Niczego!", "Dziewczynki z The Ring."],
+  /*9*/   ["Czy rozmawiasz czasem ze sobą?", "Oczywiście, że nie!", "Od czasu do czasu, gdy nikt nie słyszy...", "Kiedy muszę się wyżalić.", "Jasne, jestem jedyna osobą, która zawsze mnie słucha."],
+  /*10*/  ["Czujesz głód, sprawdzasz lodówkę, a w niej nic nie ma oprócz światła. Co teraz?", "Wracam do pokoju, aby tam umrzeć z głodu.", "Biegnę do sklepu, zanim mnie siły opuszczą.", "Przyjdę sprawdzić za chwilę, może coś się zmieni?", "Mamooooooo!"],
+  /*11*/  ["Czy słyszysz czasem wibrowanie swojego telefonu, chociaż nikt nie dzwonił i nie pisał?", "Mam gołębia od przynoszenia mi wieści, ale on nie wibruje.", "Nie, jeszcze mi się to nie zdarzyło.", "Tak!", "Tak, ...słyszę też różne głosy."],
+  /*12*/  ["Kiedy rozmawiasz z obcymi ludźmi?", "Nigdy, najwyżej podsłuchuję cudze rozmowy.", "Tylko jeśli pytam o drogę.", "Kiedy chcę zapalić, a nie mam fajek.", "Obcy to przyjaciele, których jeszcze nie poznaliśmy!"],
+  /*13*/  ["Ilu masz przyjaciół?", "Na facebooku ponad 200.", "Jednego, prawdziwego.", "Całe stadko.", "A friendzone się liczy?"],
+  /*14*/  ["Kim wolisz zostać następnym wcieleniu?", "Ewą Chodakowską", "Donaldem Trumpem", "Gołębiem", "Głazem"],
+  /*15*/  ["Co robisz podczas kłótni?", "Walczę na argumenty.", "Uznaję swoją rację, bo moja racja jest najświętsza!", "Szukam kompromisu.", "Proponuję rozmówcy piwo dla złagodzenia sytuacji."],
+  /*16*/  ["Jakie książki preferujesz?", "Science fiction", "Kryminalne", "Romanse", "Audiobooki:)"]
 ]
+
+var hiddenDreams = [
+    {
+        dream: "Spędzenie nocy na cmentarzu",
+        image: 'images/cemetery.jpg',
+        altText: 'Cmentarz nocą',
+        youNeed: "Odrobina strachu jeszcze nikomu nie zaszkodziła. Wycieczka będzie przednia, a nóż spotkasz swoich przodków? Jedyne czego potrzebujesz, by zrealizować swoje ukryte marzenie to cmentarz i ewentualnie GoogleMaps:)"
+    },
+    {
+        dream: 'Pojechać na biegun południowy. Stanąć na rękach. Podtrzymywać ziemię',
+        image: 'images/1297513718050_ORIGINAL.jpg',
+        altText: 'Odwrocone zdjęcie człowieka stojącego na rękach, na biegunie',
+        youNeed: 'Białe niedźwiedzie polarne i mroźny wiatr Ci nie straszne, bo w głębi duszy pragniesz na własnych barkach trzymać świat. Jedyne czego potrzebujesz, by zrealizować swoje ukryte marzenie to bilet na Biegun Poludniowy i ciepłe ubranie!'
+    },
+    {
+        dream: 'Kupić konia wyścigowego i nazwać go "Oskar obejmuje prowadzenie',
+        image: 'images/476264.jpg',
+        altText: 'Wyścigi konne',
+        youNeed: 'Twoja podświaomość wie, że pragniesz wygrywać za wszelką cenę. Aby zrealizować swoje marzenie potrzebny Ci będzie tylko ...koń!'
+    },
+    {
+        dream: 'Skok z helikoptera do oceanu',
+        image: 'images/10438590994_776e579440_b.jpg',
+        altText: 'Czlowiek wyskakujący z helikoptera do wody',
+        youNeed: 'Być może nie jesteś tego do końca świadom, ale gdzieś w środku brakuje Ci zastrzyku adrenaliny. Aby zrealizować swoje skryte marzenie potrzebujesz tylko ...biletu na kurs helikopterem i oceanu!'
+    },
+    {
+        dream: 'Skok z dywanu na podłogę',
+        image: 'images/maxresdefault.jpg',
+        altText: 'Świnka morska na krawędzi dywanu',
+        youNeed: 'Życie dostarcza Ci wspaniałych wrażeń. Nie trzeba Ci wiele, żeby poziom adrenaliny skoczył w górę. Do realizacji celu, o którym skrycie marzysz wystarczy  Ci kawałek dywanu i podlogi!'
+    },
+    {
+        dream: 'Wejść do zatłoczonej windy i powiedzieć: pewnie się zastanawiacie czemu was tu zgromadziłem/łam?',
+        image: 'images/g-10.jpg',
+        altText: 'Ludzie w windzie',
+        youNeed: 'Twój umysł wie najlepiej czego potrzebujesz. Chcesz, żeby ludzie słuchali Cię z oczami pełnymi niedowierzania? Zrealizuj swe ukryte marzenie, do tego porzebujesz tylko windy i kilku przypadkowych osób!'
+    }
+  ]
 
 //Navigation
 var page1 = document.querySelector(".page1");
@@ -113,31 +128,38 @@ function loadQuestion(){
   }
 
   //Random questions
-  var newQuestions = [];
-    for (i=0; i<5; i++){
-    randomQ = Math.round(Math.random()*(questions.length-1));
-    newQuestions.push(questions[randomQ]);
-  }
+  function lottery(){
+    for (i=0; i<1; i++){
+      randomQ = Math.round(Math.random()*(questions.length-1));
+        if(newQuestions.indexOf(questions[randomQ]) == -1){
+          newQuestions.push(questions[randomQ]);
+        }else{
+          lottery();
+        }
+      }
+    }
+  lottery();
 
   //Finish, score
-  if(position >= newQuestions.length){
-    testStatus.innerHTML = "Twój wynik";
-    test.innerHTML = "<dl>"+
-                          "<dt>Masz "+counter+" punktów.</dt>"+
-                            "<dd><span>Cechy charakterystyczne:</span><br>łatwość operowania słowem (pisanym, mówionym), umiejętność przemawiania i prezentowania własnego zdania i przekonań, zamiłowanie do książek, duży zasób słownictwa, wrażliwość na niuanse językowe.<br><span>Praca:</span><br>dziennikarz, tłumacz, pisarz, poeta, mówca, polityk, redaktor.<br><span>Życie codzienne:</span><br>pisz, czytaj, wstąp do klubu dyskusyjnego, załóż gazetkę szkolną, bierz udział w debatach</dd>"+
-                        "</dl>";
+  if(position >= 5){
+    var myResult = function(x){
+      x = counter;
+      if(x<3){
+        result = '<h1>'+hiddenDreams[0].dream+'</h1><img src='+hiddenDreams[0].image+' alt='+hiddenDreams[0].altText+'><p>'+hiddenDreams[0].youNeed+'</p>';
+      }else if(x<6){
+        result = '<h1>'+hiddenDreams[1].dream+'</h1><img class="narrowPicture" src='+hiddenDreams[1].image+' alt='+hiddenDreams[1].altText+'><p>'+hiddenDreams[1].youNeed+'</p>';
+      }else if(x<9){
+        result = '<h1>'+hiddenDreams[2].dream+'</h1><img src='+hiddenDreams[2].image+' alt='+hiddenDreams[2].altText+'><p>'+hiddenDreams[2].youNeed+'</p>';
+      }else if(x<12){
+        result = '<h1>'+hiddenDreams[3].dream+'</h1><img src='+hiddenDreams[3].image+' alt='+hiddenDreams[3].altText+'><p>'+hiddenDreams[3].youNeed+'</p>';
+      }else{
+        result = '<h1>'+hiddenDreams[4].dream+'</h1><img src='+hiddenDreams[4].image+' alt='+hiddenDreams[4].altText+'><p>'+hiddenDreams[4].youNeed+'</p>';
+      }
+      return result;
+    }
 
-    var dt = document.querySelectorAll('dt');
-    dt.forEach(function(element){
-      element.addEventListener("click", function(){
-        var dd = element.nextSibling;
-        if(dd.style.display === "block"){
-          dd.style.display = "none";
-        }else{
-          dd.style.display = "block";
-        }
-      })
-    })
+    testStatus.innerHTML = "Twoje ukryte marzenie to...";
+    test.innerHTML = "<div class='finalDiv'>"+myResult()+"</div>";
 
     return false;
   }
@@ -152,18 +174,15 @@ function loadQuestion(){
   optionB= newQuestions[position][2];
   optionC = newQuestions[position][3];
   optionD = newQuestions[position][4];
-  optionE = newQuestions[position][5];
-  optionF = newQuestions[position][6];
 
   //Body of test
   test.innerHTML = "<h3>"+question+"</h3>"+
-      "<input type='radio' name='choices' value='0'>"+optionA+
-      "<span>&ensp;</span><input type='radio' name='choices' value='1'>"+optionB+
-      "<span>&ensp;</span><input type='radio' name='choices' value='2'>"+optionC+
-      "<span>&ensp;</span><input type='radio' name='choices' value='3'>"+optionD+
-      "<span>&ensp;</span><input type='radio' name='choices' value='4'>"+optionE+
-      "<span>&ensp;</span><input type='radio' name='choices' value='5'>"+optionF+
-      "<br><button onclick='checkAnswer()'>Dalej</button>";
+  '<div class="optionBox">'+
+    "<label><input type='radio' name='choices' value='0'>"+optionA+"</label>"+
+    "<br><label><input type='radio' name='choices' value='1'>"+optionB+"</label>"+
+    "<br><label><input type='radio' name='choices' value='2'>"+optionC+"</label>"+
+    "<br><label><input type='radio' name='choices' value='3'>"+optionD+"</label>"+
+  "</div><button onclick='checkAnswer()'>Dalej</button>";
 }
 
 var choices = document.getElementsByName("choices");
@@ -230,9 +249,6 @@ form.addEventListener('submit',function(event){
         successMsg.innerText = 'Formularz wysłano';
         form.submit();
     }
-
 })
-
-
 
 window.addEventListener("load", loadQuestion);

@@ -2,12 +2,13 @@
 
 **Basic informations**
 
-This quiz is a test of professional predisposition (in Polish). The test will help you discover your strongest types of intelligence.
+What's your real dream you didn't know about? This quiz will help you discover it!
+The quiz contains some questions about opinions on different topics and life situations (in Polish). At the end of the test the user discovers his hidden dream.
 
 
 **Inspiration**
 
-My quiz is based on test published on website of general secondary school in Węgorzewo. This knowledge may be a valuable suggestion especially for young people. The user will learn what kind of work environments and occupations suit him best.
+Why did i choose that topic? Just for fun!
 
 
 **License**
