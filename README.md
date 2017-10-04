@@ -8,7 +8,7 @@ The quiz contains some questions about opinions on different topics and life sit
 
 **Inspiration**
 
-Why did i choose that topic? Just for fun!
+Why did I choose this topic? Just for fun!
 
 
 **License**

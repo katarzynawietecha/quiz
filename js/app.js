@@ -9,9 +9,9 @@ var questions = [
   /*1*/   ["Mam ochotę powiedzieć wszystkim co rzeczywiście o nich myslę.", "Nigdy, przecież wiedza co o nich myślę.", "Czasem.", "Często.", "Prawie codziennie!"],
   /*2*/   ["Lubię szybką jazdę samochodem lub motorem.", "Nie spieszy mi się na drugi świat.", "Trochę.", "Tak, ale nie swoim:)", "Uwielbiam!"],
   /*3*/   ["Co powiesz na samotny, wieczorny spacer po lesie?", "Nigdy w życiu!", "Wolę inne miejsca.", "Czemu nie.", "Pójdę nawet dziś!"],
-  /*4*/   ["Zwierzęta to nasi najlepsi przyjaciele.", "Ja tam z nimi nie gadam", "Czasem dostrzegam jakąś nić porozumienia", "Kot, pies tak, byle tylko nie żmija!", "Święta racja"],
+  /*4*/   ["Zwierzęta to nasi najlepsi przyjaciele.", "Ja tam z nimi nie gadam...", "Czasem dostrzegam jakąś nić porozumienia.", "Kot, pies tak, byle tylko nie żmija!", "Święta racja."],
   /*5*/   ["Co myślisz o wyjeździe Fiatem 126p po frytki do McDrive.", "Kto jeszcze tym jeździ?", "Jeśli nie będzie trzeba pchać to może być.", "Pojadę, ale tylko czerownym.", "To gdzie ten maluch?"],
-  /*6*/   ["Lubisz dzieci?", "A co to jest dzieci?", "Jak śpią i jeść nie wołają..", "Cudze i z daleka - tak!", "Są urocze!"],
+  /*6*/   ["Lubisz dzieci?", 'A co to jest "dzieci?"', "Jak śpią i jeść nie wołają...", "Cudze i z daleka - tak!", "Są urocze!"],
   /*7*/   ["Która z podanych czynności jest dla Ciebie najważniejsza?", "Słuchanie muzyki.", "Picie porannej kawy.", "Spanie do południa.", "Spotkania z przyjaciółmi."],
   /*8*/   ["Czego boisz się najbardziej?", "Czarnej wdowy chodzącej po mojej pościeli.", "Policji przy zjeździe z autostrady.", "Niczego!", "Dziewczynki z The Ring."],
   /*9*/   ["Czy rozmawiasz czasem ze sobą?", "Oczywiście, że nie!", "Od czasu do czasu, gdy nikt nie słyszy...", "Kiedy muszę się wyżalić.", "Jasne, jestem jedyna osobą, która zawsze mnie słucha."],
@@ -21,42 +21,42 @@ var questions = [
   /*13*/  ["Ilu masz przyjaciół?", "Na facebooku ponad 200.", "Jednego, prawdziwego.", "Całe stadko.", "A friendzone się liczy?"],
   /*14*/  ["Kim wolisz zostać następnym wcieleniu?", "Ewą Chodakowską", "Donaldem Trumpem", "Gołębiem", "Głazem"],
   /*15*/  ["Co robisz podczas kłótni?", "Walczę na argumenty.", "Uznaję swoją rację, bo moja racja jest najświętsza!", "Szukam kompromisu.", "Proponuję rozmówcy piwo dla złagodzenia sytuacji."],
-  /*16*/  ["Jakie książki preferujesz?", "Science fiction", "Kryminalne", "Romanse", "Audiobooki:)"]
+  /*16*/  ["Jakie książki preferujesz?", "Science fiction.", "Kryminalne.", "Romanse.", "Audiobooki:)"]
 ]
 
 var hiddenDreams = [
     {
-        dream: "Spędzenie nocy na cmentarzu",
+        dream: 'Spędzenie nocy na cmentarzu!',
         image: 'images/cemetery.jpg',
         altText: 'Cmentarz nocą',
         youNeed: "Odrobina strachu jeszcze nikomu nie zaszkodziła. Wycieczka będzie przednia, a nóż spotkasz swoich przodków? Jedyne czego potrzebujesz, by zrealizować swoje ukryte marzenie to cmentarz i ewentualnie GoogleMaps:)"
     },
     {
-        dream: 'Pojechać na biegun południowy. Stanąć na rękach. Podtrzymywać ziemię',
+        dream: 'Pojechać na biegun południowy. Stanąć na rękach. Podtrzymywać ziemię!',
         image: 'images/1297513718050_ORIGINAL.jpg',
         altText: 'Odwrocone zdjęcie człowieka stojącego na rękach, na biegunie',
         youNeed: 'Białe niedźwiedzie polarne i mroźny wiatr Ci nie straszne, bo w głębi duszy pragniesz na własnych barkach trzymać świat. Jedyne czego potrzebujesz, by zrealizować swoje ukryte marzenie to bilet na Biegun Poludniowy i ciepłe ubranie!'
     },
     {
-        dream: 'Kupić konia wyścigowego i nazwać go "Oskar obejmuje prowadzenie',
+        dream: 'Kupić konia wyścigowego i nazwać go "Oskar obejmuje prowadzenie"!',
         image: 'images/476264.jpg',
         altText: 'Wyścigi konne',
         youNeed: 'Twoja podświaomość wie, że pragniesz wygrywać za wszelką cenę. Aby zrealizować swoje marzenie potrzebny Ci będzie tylko ...koń!'
     },
     {
-        dream: 'Skok z helikoptera do oceanu',
+        dream: 'Skok z helikoptera do oceanu!',
         image: 'images/10438590994_776e579440_b.jpg',
         altText: 'Czlowiek wyskakujący z helikoptera do wody',
         youNeed: 'Być może nie jesteś tego do końca świadom, ale gdzieś w środku brakuje Ci zastrzyku adrenaliny. Aby zrealizować swoje skryte marzenie potrzebujesz tylko ...biletu na kurs helikopterem i oceanu!'
     },
     {
-        dream: 'Skok z dywanu na podłogę',
+        dream: 'Skok z dywanu na podłogę!',
         image: 'images/maxresdefault.jpg',
         altText: 'Świnka morska na krawędzi dywanu',
         youNeed: 'Życie dostarcza Ci wspaniałych wrażeń. Nie trzeba Ci wiele, żeby poziom adrenaliny skoczył w górę. Do realizacji celu, o którym skrycie marzysz wystarczy  Ci kawałek dywanu i podlogi!'
     },
     {
-        dream: 'Wejść do zatłoczonej windy i powiedzieć: pewnie się zastanawiacie czemu was tu zgromadziłem/łam?',
+        dream: 'Wejść do zatłoczonej windy i powiedzieć: pewnie się zastanawiacie czemu was tu zgromadziłem/am?',
         image: 'images/g-10.jpg',
         altText: 'Ludzie w windzie',
         youNeed: 'Twój umysł wie najlepiej czego potrzebujesz. Chcesz, żeby ludzie słuchali Cię z oczami pełnymi niedowierzania? Zrealizuj swe ukryte marzenie, do tego porzebujesz tylko windy i kilku przypadkowych osób!'
@@ -150,16 +150,26 @@ function loadQuestion(){
         result = '<h1>'+hiddenDreams[1].dream+'</h1><img class="narrowPicture" src='+hiddenDreams[1].image+' alt='+hiddenDreams[1].altText+'><p>'+hiddenDreams[1].youNeed+'</p>';
       }else if(x<9){
         result = '<h1>'+hiddenDreams[2].dream+'</h1><img src='+hiddenDreams[2].image+' alt='+hiddenDreams[2].altText+'><p>'+hiddenDreams[2].youNeed+'</p>';
-      }else if(x<12){
+      }else if(x<11){
         result = '<h1>'+hiddenDreams[3].dream+'</h1><img src='+hiddenDreams[3].image+' alt='+hiddenDreams[3].altText+'><p>'+hiddenDreams[3].youNeed+'</p>';
-      }else{
+      }else if(x<13){
         result = '<h1>'+hiddenDreams[4].dream+'</h1><img src='+hiddenDreams[4].image+' alt='+hiddenDreams[4].altText+'><p>'+hiddenDreams[4].youNeed+'</p>';
+      }else{
+        result = '<h1>'+hiddenDreams[5].dream+'</h1><img src='+hiddenDreams[5].image+' alt='+hiddenDreams[5].altText+'><p>'+hiddenDreams[5].youNeed+'</p>';
       }
       return result;
     }
 
     testStatus.innerHTML = "Twoje ukryte marzenie to...";
+    setTimeout(function(){
+      testStatus.style.display = "none";
+    }, 1200);
+
     test.innerHTML = "<div class='finalDiv'>"+myResult()+"</div>";
+    test.style.display = "none";
+    setTimeout(function(){
+      test.style.display = "block";
+    }, 1200);
 
     return false;
   }
