@@ -161,6 +161,7 @@ function loadQuestion(){
     }
 
     testStatus.innerHTML = "Twoje ukryte marzenie to...";
+    playFinalSound();
     setTimeout(function(){
       testStatus.style.display = "none";
     }, 1200);
@@ -188,11 +189,11 @@ function loadQuestion(){
   //Body of test
   test.innerHTML = "<h3>"+question+"</h3>"+
   '<div class="optionBox">'+
-    "<label><input type='radio' name='choices' value='0'>"+optionA+"</label>"+
-    "<br><label><input type='radio' name='choices' value='1'>"+optionB+"</label>"+
-    "<br><label><input type='radio' name='choices' value='2'>"+optionC+"</label>"+
-    "<br><label><input type='radio' name='choices' value='3'>"+optionD+"</label>"+
-  "</div><button onclick='checkAnswer()'>Dalej</button>";
+    "<label onclick='playClickSound()'><input type='radio' name='choices' value='0'>"+optionA+"</label>"+
+    "<br><label onclick='playClickSound()'><input type='radio' name='choices' value='1'>"+optionB+"</label>"+
+    "<br><label onclick='playClickSound()'><input type='radio' name='choices' value='2'>"+optionC+"</label>"+
+    "<br><label onclick='playClickSound()'><input type='radio' name='choices' value='3'>"+optionD+"</label>"+
+  "</div><button onclick='checkAnswer();playClickSound()'>Dalej</button>";
 }
 
 var choices = document.getElementsByName("choices");
@@ -260,5 +261,15 @@ form.addEventListener('submit',function(event){
         form.submit();
     }
 })
+
+function playClickSound(){
+  var clickSound = new Audio("sounds/Click-SoundBible.com-1387633738.mp3");
+  clickSound.play();
+}
+
+function playFinalSound(){
+  var finalSound = new Audio("sounds/TaDa-SoundBible.com-1884170640.mp3");
+  finalSound.play();
+}
 
 window.addEventListener("load", loadQuestion);

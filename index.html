@@ -10,10 +10,10 @@
       <div class="container">
         <nav>
           <ul>
-            <li class="page1">Quiz</li>
-            <li class="page2">O teście</li>
-            <li class="page3">Interpretacja</li>
-            <li class="page4">Kontakt</li>
+            <li class="page1" onclick="playClickSound()">Quiz</li>
+            <li class="page2" onclick="playClickSound()">O teście</li>
+            <li class="page3" onclick="playClickSound()">Interpretacja</li>
+            <li class="page4" onclick="playClickSound()">Kontakt</li>
           </ul>
         </nav>
         <h1 class="title">Odkryj marzenie,<br>które tkwi głęboko w Twojej podświadomości!</h1>
@@ -28,12 +28,13 @@
             <div id="instruction">
               <h2>Instrukcja</h2>
               <p>Przeczytaj 5 losowych pytań. Pod każdym z nich masz do wyboru 4 stwierdzenia, wybierz to, które najbardziej do Ciebie pasuje.</p>
-              <button id="begin">Zacznij teraz</button>
+              <button id="begin" onclick="playClickSound()">Zacznij teraz</button>
             </div>
           </div>
-          <div id="page2-div">Jakie jest Twoje prawdziwe marzenie, o którym nie masz pojęcia? Rozwiąż quiz i odkryj prawdę o sobie. Pytania dotyczą Twojej opinii na różne tematy i sytuacje życiowe. Ale nie traktuj ich zbyt poważnie, to tylko zabawa!</div>
+          <div id="page2-div">Jakie jest Twoje prawdziwe marzenie, o którym nie masz pojęcia? Rozwiąż quiz i odkryj prawdę o sobie! Pytania dotyczą Twojej opinii na różne tematy i sytuacje życiowe. Ale nie traktuj ich zbyt poważnie, to tylko zabawa!</div>
           <div id="page3-div">Jeśli wyniki testu są już znane, to mam nadzieję, że było to kilka miło spędzonych minut Twojego życia. Na wynik patrz z przymrużeniem oka. Jeśli jednak zechcesz zrealizować swoje nowoodkryte marzenie, pamiętaj robisz to na swoją odpowiedzialność.</div>
           <div id="page4-div">
+            <p>Masz jakieś uwagi lub sugestie, którymi chcesz się ze mną podzielić? Skorzystaj z poniższego formularza kontaktowego.</p>
             <form>
               <div class="info">
                   <div class="error-message">
@@ -41,13 +42,13 @@
                   <div class="success-message">
                   </div>
               </div>
-              <label>Imię</label>
+              <label>Imię:</label>
               <input type="text" placeholder="Imię" id="name" class="name">
-              <label>Adres email</label>
+              <label>Adres email:</label>
               <input type="text" placeholder="email" id="email" class="email">
-              <label>Wiadomość</label>
+              <label>Wiadomość:</label>
               <textarea placeholder="Tutaj wpisz wiadomość" id="message" class="message"></textarea>
-              <button id="submit">Wyślij</button>
+              <button id="submit" onclick="playClickSound()">Wyślij</button>
             </form>
           </div>
         </div>
