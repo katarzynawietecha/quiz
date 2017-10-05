@@ -10,10 +10,10 @@
       <div class="container">
         <nav>
           <ul>
-            <li class="page1" onclick="playClickSound()">Quiz</li>
-            <li class="page2" onclick="playClickSound()">O teście</li>
-            <li class="page3" onclick="playClickSound()">Interpretacja</li>
-            <li class="page4" onclick="playClickSound()">Kontakt</li>
+            <li class="page1" onclick="play(clickSound)">Quiz</li>
+            <li class="page2" onclick="play(clickSound)">O teście</li>
+            <li class="page3" onclick="play(clickSound)">Interpretacja</li>
+            <li class="page4" onclick="play(clickSound)">Kontakt</li>
           </ul>
         </nav>
         <h1 class="title">Odkryj marzenie,<br>które tkwi głęboko w Twojej podświadomości!</h1>
@@ -28,7 +28,7 @@
             <div id="instruction">
               <h2>Instrukcja</h2>
               <p>Przeczytaj 5 losowych pytań. Pod każdym z nich masz do wyboru 4 stwierdzenia, wybierz to, które najbardziej do Ciebie pasuje.</p>
-              <button id="begin" onclick="playClickSound()">Zacznij teraz</button>
+              <button id="begin" onclick="play(clickSound)">Zacznij teraz</button>
             </div>
           </div>
           <div id="page2-div">Jakie jest Twoje prawdziwe marzenie, o którym nie masz pojęcia? Rozwiąż quiz i odkryj prawdę o sobie! Pytania dotyczą Twojej opinii na różne tematy i sytuacje życiowe. Ale nie traktuj ich zbyt poważnie, to tylko zabawa!</div>
@@ -48,7 +48,7 @@
               <input type="text" placeholder="email" id="email" class="email">
               <label>Wiadomość:</label>
               <textarea placeholder="Tutaj wpisz wiadomość" id="message" class="message"></textarea>
-              <button id="submit" onclick="playClickSound()">Wyślij</button>
+              <button id="submit" onclick="play(clickSound)">Wyślij</button>
             </form>
           </div>
         </div>

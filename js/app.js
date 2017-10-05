@@ -14,12 +14,12 @@ var questions = [
   /*6*/   ["Lubisz dzieci?", 'A co to jest "dzieci?"', "Jak śpią i jeść nie wołają...", "Cudze i z daleka - tak!", "Są urocze!"],
   /*7*/   ["Która z podanych czynności jest dla Ciebie najważniejsza?", "Słuchanie muzyki.", "Picie porannej kawy.", "Spanie do południa.", "Spotkania z przyjaciółmi."],
   /*8*/   ["Czego boisz się najbardziej?", "Czarnej wdowy chodzącej po mojej pościeli.", "Policji przy zjeździe z autostrady.", "Niczego!", "Dziewczynki z The Ring."],
-  /*9*/   ["Czy rozmawiasz czasem ze sobą?", "Oczywiście, że nie!", "Od czasu do czasu, gdy nikt nie słyszy...", "Kiedy muszę się wyżalić.", "Jasne, jestem jedyna osobą, która zawsze mnie słucha."],
+  /*9*/   ["Czy rozmawiasz czasem ze sobą?", "Oczywiście, że nie!", "Od czasu do czasu, gdy nikt nie słyszy...", "Kiedy muszę się wyżalić.", "Jasne, jestem jedyną osobą, która zawsze mnie słucha."],
   /*10*/  ["Czujesz głód, sprawdzasz lodówkę, a w niej nic nie ma oprócz światła. Co teraz?", "Wracam do pokoju, aby tam umrzeć z głodu.", "Biegnę do sklepu, zanim mnie siły opuszczą.", "Przyjdę sprawdzić za chwilę, może coś się zmieni?", "Mamooooooo!"],
   /*11*/  ["Czy słyszysz czasem wibrowanie swojego telefonu, chociaż nikt nie dzwonił i nie pisał?", "Mam gołębia od przynoszenia mi wieści, ale on nie wibruje.", "Nie, jeszcze mi się to nie zdarzyło.", "Tak!", "Tak, ...słyszę też różne głosy."],
   /*12*/  ["Kiedy rozmawiasz z obcymi ludźmi?", "Nigdy, najwyżej podsłuchuję cudze rozmowy.", "Tylko jeśli pytam o drogę.", "Kiedy chcę zapalić, a nie mam fajek.", "Obcy to przyjaciele, których jeszcze nie poznaliśmy!"],
   /*13*/  ["Ilu masz przyjaciół?", "Na facebooku ponad 200.", "Jednego, prawdziwego.", "Całe stadko.", "A friendzone się liczy?"],
-  /*14*/  ["Kim wolisz zostać następnym wcieleniu?", "Ewą Chodakowską", "Donaldem Trumpem", "Gołębiem", "Głazem"],
+  /*14*/  ["Kim wolisz zostać następnym wcieleniu?", "Ewą Chodakowską.", "Donaldem Trumpem.", "Gołębiem.", "Głazem."],
   /*15*/  ["Co robisz podczas kłótni?", "Walczę na argumenty.", "Uznaję swoją rację, bo moja racja jest najświętsza!", "Szukam kompromisu.", "Proponuję rozmówcy piwo dla złagodzenia sytuacji."],
   /*16*/  ["Jakie książki preferujesz?", "Science fiction.", "Kryminalne.", "Romanse.", "Audiobooki:)"]
 ]
@@ -62,6 +62,15 @@ var hiddenDreams = [
         youNeed: 'Twój umysł wie najlepiej czego potrzebujesz. Chcesz, żeby ludzie słuchali Cię z oczami pełnymi niedowierzania? Zrealizuj swe ukryte marzenie, do tego porzebujesz tylko windy i kilku przypadkowych osób!'
     }
   ]
+
+//Sounds
+var clickSound = new Audio("sounds/Click-SoundBible.com-1387633738.mp3");
+var finalSound = new Audio("sounds/TaDa-SoundBible.com-1884170640.mp3");
+var errorSound = new Audio("sounds/ComputerError-SoundBible.com-69768060.mp3");
+
+function play(sound){
+  sound.play();
+}
 
 //Navigation
 var page1 = document.querySelector(".page1");
@@ -161,16 +170,18 @@ function loadQuestion(){
     }
 
     testStatus.innerHTML = "Twoje ukryte marzenie to...";
-    playFinalSound();
+
     setTimeout(function(){
       testStatus.style.display = "none";
-    }, 1200);
+      play(finalSound);
+    }, 1000);
 
-    test.innerHTML = "<div class='finalDiv'>"+myResult()+"</div>";
+    test.innerHTML = "<div class='finalDiv'>"+myResult()+"</div><button id='play-again' onclick='playAgain();play(clickSound)'>Zagraj ponownie</button>";
     test.style.display = "none";
+
     setTimeout(function(){
       test.style.display = "block";
-    }, 1200);
+    }, 1000);
 
     return false;
   }
@@ -189,11 +200,11 @@ function loadQuestion(){
   //Body of test
   test.innerHTML = "<h3>"+question+"</h3>"+
   '<div class="optionBox">'+
-    "<label onclick='playClickSound()'><input type='radio' name='choices' value='0'>"+optionA+"</label>"+
-    "<br><label onclick='playClickSound()'><input type='radio' name='choices' value='1'>"+optionB+"</label>"+
-    "<br><label onclick='playClickSound()'><input type='radio' name='choices' value='2'>"+optionC+"</label>"+
-    "<br><label onclick='playClickSound()'><input type='radio' name='choices' value='3'>"+optionD+"</label>"+
-  "</div><button onclick='checkAnswer();playClickSound()'>Dalej</button>";
+    "<label><input type='radio' name='choices' value='0'>"+optionA+"</label>"+
+    "<br><label><input type='radio' name='choices' value='1'>"+optionB+"</label>"+
+    "<br><label><input type='radio' name='choices' value='2'>"+optionC+"</label>"+
+    "<br><label><input type='radio' name='choices' value='3'>"+optionD+"</label>"+
+  "</div><button onclick='checkAnswer();play(clickSound)'>Dalej</button>";
 }
 
 var choices = document.getElementsByName("choices");
@@ -212,6 +223,7 @@ function checkAnswer(){
     }
   }
   if(!isChecked){
+    play(errorSound);
     alert("Aby przejść dalej musisz wybrać jedną z odpowiedzi!");
   }
 }
@@ -219,6 +231,17 @@ function checkAnswer(){
 function uploadQuestion(){
   position++;
   loadQuestion();
+}
+
+//Play again event function
+function playAgain(){
+  position = 0;
+  newQuestions = [];
+  counter = 0;
+  loadQuestion();
+  test.style.display = "none";
+  testStatus.style.display = "none";
+  instruction.style.display = "block";
 }
 
 //Form checking
@@ -261,15 +284,5 @@ form.addEventListener('submit',function(event){
         form.submit();
     }
 })
-
-function playClickSound(){
-  var clickSound = new Audio("sounds/Click-SoundBible.com-1387633738.mp3");
-  clickSound.play();
-}
-
-function playFinalSound(){
-  var finalSound = new Audio("sounds/TaDa-SoundBible.com-1884170640.mp3");
-  finalSound.play();
-}
 
 window.addEventListener("load", loadQuestion);
