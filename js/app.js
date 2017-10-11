@@ -6,7 +6,7 @@ var newQuestions = [];
 var counter = 0;
 
 var questions = [
-  /*1*/   ["Mam ochotę powiedzieć wszystkim co rzeczywiście o nich myslę.", "Nigdy, przecież wiedza co o nich myślę.", "Czasem.", "Często.", "Prawie codziennie!"],
+  /*1*/   ["Mam ochotę powiedzieć wszystkim co rzeczywiście o nich myslę.", "Nigdy, przecież wiedzą co o nich myślę.", "Czasem.", "Często.", "Prawie codziennie!"],
   /*2*/   ["Lubię szybką jazdę samochodem lub motorem.", "Nie spieszy mi się na drugi świat.", "Trochę.", "Tak, ale nie swoim:)", "Uwielbiam!"],
   /*3*/   ["Co powiesz na samotny, wieczorny spacer po lesie?", "Nigdy w życiu!", "Wolę inne miejsca.", "Czemu nie.", "Pójdę nawet dziś!"],
   /*4*/   ["Zwierzęta to nasi najlepsi przyjaciele.", "Ja tam z nimi nie gadam...", "Czasem dostrzegam jakąś nić porozumienia.", "Kot, pies tak, byle tylko nie żmija!", "Święta racja."],
@@ -19,7 +19,7 @@ var questions = [
   /*11*/  ["Czy słyszysz czasem wibrowanie swojego telefonu, chociaż nikt nie dzwonił i nie pisał?", "Mam gołębia od przynoszenia mi wieści, ale on nie wibruje.", "Nie, jeszcze mi się to nie zdarzyło.", "Tak!", "Tak, ...słyszę też różne głosy."],
   /*12*/  ["Kiedy rozmawiasz z obcymi ludźmi?", "Nigdy, najwyżej podsłuchuję cudze rozmowy.", "Tylko jeśli pytam o drogę.", "Kiedy chcę zapalić, a nie mam fajek.", "Obcy to przyjaciele, których jeszcze nie poznaliśmy!"],
   /*13*/  ["Ilu masz przyjaciół?", "Na facebooku ponad 200.", "Jednego, prawdziwego.", "Całe stadko.", "A friendzone się liczy?"],
-  /*14*/  ["Kim wolisz zostać następnym wcieleniu?", "Ewą Chodakowską.", "Donaldem Trumpem.", "Gołębiem.", "Głazem."],
+  /*14*/  ["Kim wolisz zostać w następnym wcieleniu?", "Ewą Chodakowską.", "Donaldem Trumpem.", "Gołębiem.", "Głazem."],
   /*15*/  ["Co robisz podczas kłótni?", "Walczę na argumenty.", "Uznaję swoją rację, bo moja racja jest najświętsza!", "Szukam kompromisu.", "Proponuję rozmówcy piwo dla złagodzenia sytuacji."],
   /*16*/  ["Jakie książki preferujesz?", "Science fiction.", "Kryminalne.", "Romanse.", "Audiobooki:)"]
 ]
@@ -191,7 +191,6 @@ function loadQuestion(){
 
   //Connection
   var question = newQuestions[position][0];
-  console.log(newQuestions[position][0]);
   optionA = newQuestions[position][1];
   optionB= newQuestions[position][2];
   optionC = newQuestions[position][3];

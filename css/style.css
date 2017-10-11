@@ -219,6 +219,8 @@ textarea {
   cursor: text;
   height: 80px;
   border: 1px solid #a6a6a6;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
 }
 
 .error-message {
