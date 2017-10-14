@@ -3,7 +3,6 @@ var test = document.getElementById("test");
 var testStatus = document.getElementById("test-status");
 var beginButton = document.getElementById("begin");
 var newQuestions = [];
-var counter = 0;
 
 var questions = [
   /*0*/   ["Mam ochotę powiedzieć wszystkim co rzeczywiście o nich myslę.", ["Nigdy, przecież wiedzą co o nich myślę.", "Czasem.", "Często.", "Prawie codziennie!"]],
@@ -26,12 +25,6 @@ var questions = [
 
 var hiddenDreams = [
     {
-        dream: 'Spędzenie nocy na cmentarzu!',
-        image: 'images/cemetery.jpg',
-        altText: 'Cmentarz nocą',
-        youNeed: "Odrobina strachu jeszcze nikomu nie zaszkodziła. Wycieczka będzie przednia, a nóż spotkasz swoich przodków? Jedyne czego potrzebujesz, by zrealizować swoje ukryte marzenie to cmentarz i ewentualnie GoogleMaps:)"
-    },
-    {
         dream: 'Pojechać na biegun południowy. Stanąć na rękach. Podtrzymywać ziemię!',
         image: 'images/1297513718050_ORIGINAL.jpg',
         altText: 'Odwrocone zdjęcie człowieka stojącego na rękach, na biegunie',
@@ -42,12 +35,6 @@ var hiddenDreams = [
         image: 'images/476264.jpg',
         altText: 'Wyścigi konne',
         youNeed: 'Twoja podświaomość wie, że pragniesz wygrywać za wszelką cenę. Aby zrealizować swoje marzenie potrzebny Ci będzie tylko ...koń!'
-    },
-    {
-        dream: 'Skok z helikoptera do oceanu!',
-        image: 'images/10438590994_776e579440_b.jpg',
-        altText: 'Czlowiek wyskakujący z helikoptera do wody',
-        youNeed: 'Być może nie jesteś tego do końca świadom, ale gdzieś w środku brakuje Ci zastrzyku adrenaliny. Aby zrealizować swoje skryte marzenie potrzebujesz tylko ...biletu na kurs helikopterem i oceanu!'
     },
     {
         dream: 'Skok z dywanu na podłogę!',
@@ -62,6 +49,11 @@ var hiddenDreams = [
         youNeed: 'Twój umysł wie najlepiej czego potrzebujesz. Chcesz, żeby ludzie słuchali Cię z oczami pełnymi niedowierzania? Zrealizuj swe ukryte marzenie, do tego porzebujesz tylko windy i kilku przypadkowych osób!'
     }
   ]
+
+var counterDreamA = 0;
+var counterDreamB = 0;
+var counterDreamC = 0;
+var counterDreamD = 0;
 
 //Sounds
 var clickSound = new Audio("sounds/Click-SoundBible.com-1387633738.mp3");
@@ -151,20 +143,27 @@ function loadQuestion(){
 
   //Finish, score
   if(position >= 5){
-    var myResult = function(x){
-      x = counter;
-      if(x<3){
+    var myResult = function(){
+      var dreamsArray = [counterDreamA, counterDreamB, counterDreamC, counterDreamD];
+      var newDreamsArray = dreamsArray.sort(function(a, b) {
+        return b - a;
+      });
+
+      console.log("A = "+counterDreamA+", B = "+counterDreamB+", C = "+counterDreamC+", D = "+counterDreamD+".");
+      console.log("newDreamsArray[0] = "+newDreamsArray[0]);
+      console.log("newDreamsArray[1] = "+newDreamsArray[1]);
+      console.log("newDreamsArray[2] = "+newDreamsArray[2]);
+      console.log("newDreamsArray[3] = "+newDreamsArray[3]);
+
+      //Choosing the dream
+      if(newDreamsArray[0] == counterDreamA){
         result = '<h1>'+hiddenDreams[0].dream+'</h1><img src='+hiddenDreams[0].image+' alt='+hiddenDreams[0].altText+'><p>'+hiddenDreams[0].youNeed+'</p>';
-      }else if(x<6){
-        result = '<h1>'+hiddenDreams[1].dream+'</h1><img class="narrowPicture" src='+hiddenDreams[1].image+' alt='+hiddenDreams[1].altText+'><p>'+hiddenDreams[1].youNeed+'</p>';
-      }else if(x<9){
+      }else if(newDreamsArray[0] == counterDreamB){
+        result = '<h1>'+hiddenDreams[1].dream+'</h1><img src='+hiddenDreams[1].image+' alt='+hiddenDreams[1].altText+'><p>'+hiddenDreams[1].youNeed+'</p>';
+      }else if(newDreamsArray[0] == counterDreamC){
         result = '<h1>'+hiddenDreams[2].dream+'</h1><img src='+hiddenDreams[2].image+' alt='+hiddenDreams[2].altText+'><p>'+hiddenDreams[2].youNeed+'</p>';
-      }else if(x<11){
-        result = '<h1>'+hiddenDreams[3].dream+'</h1><img src='+hiddenDreams[3].image+' alt='+hiddenDreams[3].altText+'><p>'+hiddenDreams[3].youNeed+'</p>';
-      }else if(x<13){
-        result = '<h1>'+hiddenDreams[4].dream+'</h1><img src='+hiddenDreams[4].image+' alt='+hiddenDreams[4].altText+'><p>'+hiddenDreams[4].youNeed+'</p>';
       }else{
-        result = '<h1>'+hiddenDreams[5].dream+'</h1><img src='+hiddenDreams[5].image+' alt='+hiddenDreams[5].altText+'><p>'+hiddenDreams[5].youNeed+'</p>';
+        result = '<h1>'+hiddenDreams[3].dream+'</h1><img src='+hiddenDreams[3].image+' alt='+hiddenDreams[3].altText+'><p>'+hiddenDreams[3].youNeed+'</p>';
       }
       return result;
     }
@@ -199,10 +198,10 @@ function loadQuestion(){
   //Body of test
   test.innerHTML = "<h3>"+question+"</h3>"+
   '<div class="optionBox">'+
-    "<label><input type='radio' name='choices' value='0'>"+optionA+"</label>"+
-    "<br><label><input type='radio' name='choices' value='1'>"+optionB+"</label>"+
-    "<br><label><input type='radio' name='choices' value='2'>"+optionC+"</label>"+
-    "<br><label><input type='radio' name='choices' value='3'>"+optionD+"</label>"+
+    "<label><input type='radio' name='choices' value='A'>"+optionA+"</label>"+
+    "<br><label><input type='radio' name='choices' value='B'>"+optionB+"</label>"+
+    "<br><label><input type='radio' name='choices' value='C'>"+optionC+"</label>"+
+    "<br><label><input type='radio' name='choices' value='D'>"+optionD+"</label>"+
   "</div><button onclick='checkAnswer();play(clickSound)'>Dalej</button>";
 }
 
@@ -214,10 +213,17 @@ function checkAnswer(){
   for(var i=0; i<choices.length; i++){
     if(choices[i].checked){
       var choice = choices[i].value;
-      var q = position+1;
       isChecked = true;
       //Add:
-      counter+=(parseInt(choices[i].value));
+      if(choice == "A"){
+        counterDreamA+=1;
+      }else if(choice == "B"){
+        counterDreamB+=1;
+      }else if(choice == "C"){
+        counterDreamC+=1;
+      }else{
+        counterDreamD+=1;
+      }
       uploadQuestion();
     }
   }
