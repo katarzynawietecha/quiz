@@ -6,22 +6,22 @@ var newQuestions = [];
 var counter = 0;
 
 var questions = [
-  /*1*/   ["Mam ochotę powiedzieć wszystkim co rzeczywiście o nich myslę.", "Nigdy, przecież wiedzą co o nich myślę.", "Czasem.", "Często.", "Prawie codziennie!"],
-  /*2*/   ["Lubię szybką jazdę samochodem lub motorem.", "Nie spieszy mi się na drugi świat.", "Trochę.", "Tak, ale nie swoim:)", "Uwielbiam!"],
-  /*3*/   ["Co powiesz na samotny, wieczorny spacer po lesie?", "Nigdy w życiu!", "Wolę inne miejsca.", "Czemu nie.", "Pójdę nawet dziś!"],
-  /*4*/   ["Zwierzęta to nasi najlepsi przyjaciele.", "Ja tam z nimi nie gadam...", "Czasem dostrzegam jakąś nić porozumienia.", "Kot, pies tak, byle tylko nie żmija!", "Święta racja."],
-  /*5*/   ["Co myślisz o wyjeździe Fiatem 126p po frytki do McDrive.", "Kto jeszcze tym jeździ?", "Jeśli nie będzie trzeba pchać to może być.", "Pojadę, ale tylko czerownym.", "To gdzie ten maluch?"],
-  /*6*/   ["Lubisz dzieci?", 'A co to jest "dzieci?"', "Jak śpią i jeść nie wołają...", "Cudze i z daleka - tak!", "Są urocze!"],
-  /*7*/   ["Która z podanych czynności jest dla Ciebie najważniejsza?", "Słuchanie muzyki.", "Picie porannej kawy.", "Spanie do południa.", "Spotkania z przyjaciółmi."],
-  /*8*/   ["Czego boisz się najbardziej?", "Czarnej wdowy chodzącej po mojej pościeli.", "Policji przy zjeździe z autostrady.", "Niczego!", "Dziewczynki z The Ring."],
-  /*9*/   ["Czy rozmawiasz czasem ze sobą?", "Oczywiście, że nie!", "Od czasu do czasu, gdy nikt nie słyszy...", "Kiedy muszę się wyżalić.", "Jasne, jestem jedyną osobą, która zawsze mnie słucha."],
-  /*10*/  ["Czujesz głód, sprawdzasz lodówkę, a w niej nic nie ma oprócz światła. Co teraz?", "Wracam do pokoju, aby tam umrzeć z głodu.", "Biegnę do sklepu, zanim mnie siły opuszczą.", "Przyjdę sprawdzić za chwilę, może coś się zmieni?", "Mamooooooo!"],
-  /*11*/  ["Czy słyszysz czasem wibrowanie swojego telefonu, chociaż nikt nie dzwonił i nie pisał?", "Mam gołębia od przynoszenia mi wieści, ale on nie wibruje.", "Nie, jeszcze mi się to nie zdarzyło.", "Tak!", "Tak, ...słyszę też różne głosy."],
-  /*12*/  ["Kiedy rozmawiasz z obcymi ludźmi?", "Nigdy, najwyżej podsłuchuję cudze rozmowy.", "Tylko jeśli pytam o drogę.", "Kiedy chcę zapalić, a nie mam fajek.", "Obcy to przyjaciele, których jeszcze nie poznaliśmy!"],
-  /*13*/  ["Ilu masz przyjaciół?", "Na facebooku ponad 200.", "Jednego, prawdziwego.", "Całe stadko.", "A friendzone się liczy?"],
-  /*14*/  ["Kim wolisz zostać w następnym wcieleniu?", "Ewą Chodakowską.", "Donaldem Trumpem.", "Gołębiem.", "Głazem."],
-  /*15*/  ["Co robisz podczas kłótni?", "Walczę na argumenty.", "Uznaję swoją rację, bo moja racja jest najświętsza!", "Szukam kompromisu.", "Proponuję rozmówcy piwo dla złagodzenia sytuacji."],
-  /*16*/  ["Jakie książki preferujesz?", "Science fiction.", "Kryminalne.", "Romanse.", "Audiobooki:)"]
+  /*0*/   ["Mam ochotę powiedzieć wszystkim co rzeczywiście o nich myslę.", ["Nigdy, przecież wiedzą co o nich myślę.", "Czasem.", "Często.", "Prawie codziennie!"]],
+  /*1*/   ["Lubię szybką jazdę samochodem lub motorem.", ["Nie spieszy mi się na drugi świat.", "Trochę.", "Tak, ale nie swoim:)", "Uwielbiam!"]],
+  /*2*/   ["Co powiesz na samotny, wieczorny spacer po lesie?", ["Nigdy w życiu!", "Wolę inne miejsca.", "Czemu nie.", "Pójdę nawet dziś!"]],
+  /*3*/   ["Zwierzęta to nasi najlepsi przyjaciele.", ["Ja tam z nimi nie gadam...", "Czasem dostrzegam jakąś nić porozumienia.", "Kot, pies tak, byle tylko nie żmija!", "Święta racja."]],
+  /*4*/   ["Co myślisz o wyjeździe Fiatem 126p po frytki do McDrive.", ["Kto jeszcze tym jeździ?", "Jeśli nie będzie trzeba pchać to może być.", "Pojadę, ale tylko czerownym.", "To gdzie ten maluch?"]],
+  /*5*/   ["Lubisz dzieci?", ['A co to jest "dzieci?"', "Jak śpią i jeść nie wołają...", "Cudze i z daleka - tak!", "Są urocze!"]],
+  /*6*/   ["Która z podanych czynności jest dla Ciebie najważniejsza?", ["Słuchanie muzyki.", "Picie porannej kawy.", "Spanie do południa.", "Spotkania z przyjaciółmi."]],
+  /*7*/   ["Czego boisz się najbardziej?", ["Czarnej wdowy chodzącej po mojej pościeli.", "Policji przy zjeździe z autostrady.", "Niczego!", "Dziewczynki z The Ring."]],
+  /*8*/   ["Czy rozmawiasz czasem ze sobą?", ["Oczywiście, że nie!", "Od czasu do czasu, gdy nikt nie słyszy...", "Kiedy muszę się wyżalić.", "Jasne, jestem jedyną osobą, która zawsze mnie słucha."]],
+  /*9*/   ["Czujesz głód, sprawdzasz lodówkę, a w niej nic nie ma oprócz światła. Co teraz?", ["Wracam do pokoju, aby tam umrzeć z głodu.", "Biegnę do sklepu, zanim mnie siły opuszczą.", "Przyjdę sprawdzić za chwilę, może coś się zmieni?", "Mamooooooo!"]],
+  /*10*/  ["Czy słyszysz czasem wibrowanie swojego telefonu, chociaż nikt nie dzwonił i nie pisał?", ["Mam gołębia od przynoszenia mi wieści, ale on nie wibruje.", "Nie, jeszcze mi się to nie zdarzyło.", "Tak!", "Tak, ...słyszę też różne głosy."]],
+  /*11*/  ["Kiedy rozmawiasz z obcymi ludźmi?", ["Nigdy, najwyżej podsłuchuję cudze rozmowy.", "Tylko jeśli pytam o drogę.", "Kiedy chcę zapalić, a nie mam fajek.", "Obcy to przyjaciele, których jeszcze nie poznaliśmy!"]],
+  /*12*/  ["Ilu masz przyjaciół?", ["Na facebooku ponad 200.", "Jednego, prawdziwego.", "Całe stadko.", "A friendzone się liczy?"]],
+  /*13*/  ["Kim wolisz zostać w następnym wcieleniu?", ["Ewą Chodakowską.", "Donaldem Trumpem.", "Gołębiem.", "Głazem."]],
+  /*14*/  ["Co robisz podczas kłótni?", ["Walczę na argumenty.", "Uznaję swoją rację, bo moja racja jest najświętsza!", "Szukam kompromisu.", "Proponuję rozmówcy piwo dla złagodzenia sytuacji."]],
+  /*15*/  ["Jakie książki preferujesz?", ["Science fiction.", "Kryminalne.", "Romanse.", "Audiobooki:)"]]
 ]
 
 var hiddenDreams = [
@@ -191,10 +191,10 @@ function loadQuestion(){
 
   //Connection
   var question = newQuestions[position][0];
-  optionA = newQuestions[position][1];
-  optionB= newQuestions[position][2];
-  optionC = newQuestions[position][3];
-  optionD = newQuestions[position][4];
+  optionA = newQuestions[position][1][0];
+  optionB= newQuestions[position][1][1];
+  optionC = newQuestions[position][1][2];
+  optionD = newQuestions[position][1][3];
 
   //Body of test
   test.innerHTML = "<h3>"+question+"</h3>"+
