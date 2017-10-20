@@ -157,7 +157,7 @@ function loadQuestion(){
 
       //Choosing the dream
       if(newDreamsArray[0] == counterDreamA){
-        result = '<h1>'+hiddenDreams[0].dream+'</h1><img src='+hiddenDreams[0].image+' alt='+hiddenDreams[0].altText+'><p>'+hiddenDreams[0].youNeed+'</p>';
+        result = '<h1>'+hiddenDreams[0].dream+'</h1><img class="narrowPicture" src='+hiddenDreams[0].image+' alt='+hiddenDreams[0].altText+'><p>'+hiddenDreams[0].youNeed+'</p>';
       }else if(newDreamsArray[0] == counterDreamB){
         result = '<h1>'+hiddenDreams[1].dream+'</h1><img src='+hiddenDreams[1].image+' alt='+hiddenDreams[1].altText+'><p>'+hiddenDreams[1].youNeed+'</p>';
       }else if(newDreamsArray[0] == counterDreamC){
