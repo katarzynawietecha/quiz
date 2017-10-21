@@ -9,7 +9,7 @@ var questions = [
   /*1*/   ["Lubię szybką jazdę samochodem lub motorem.", ["Nie spieszy mi się na drugi świat.", "Trochę.", "Tak, ale nie swoim:)", "Uwielbiam!"]],
   /*2*/   ["Co powiesz na samotny, wieczorny spacer po lesie?", ["Nigdy w życiu!", "Wolę inne miejsca.", "Czemu nie.", "Pójdę nawet dziś!"]],
   /*3*/   ["Zwierzęta to nasi najlepsi przyjaciele.", ["Ja tam z nimi nie gadam...", "Czasem dostrzegam jakąś nić porozumienia.", "Kot, pies tak, byle tylko nie żmija!", "Święta racja."]],
-  /*4*/   ["Co myślisz o wyjeździe Fiatem 126p po frytki do McDrive.", ["Kto jeszcze tym jeździ?", "Jeśli nie będzie trzeba pchać to może być.", "Pojadę, ale tylko czerownym.", "To gdzie ten maluch?"]],
+  /*4*/   ["Co myślisz o wyjeździe Fiatem 126p po frytki do McDrive?", ["Kto jeszcze tym jeździ?", "Jeśli nie będzie trzeba pchać to może być.", "Pojadę, ale tylko czerownym.", "To gdzie ten maluch?"]],
   /*5*/   ["Lubisz dzieci?", ['A co to jest "dzieci?"', "Jak śpią i jeść nie wołają...", "Cudze i z daleka - tak!", "Są urocze!"]],
   /*6*/   ["Która z podanych czynności jest dla Ciebie najważniejsza?", ["Słuchanie muzyki.", "Picie porannej kawy.", "Spanie do południa.", "Spotkania z przyjaciółmi."]],
   /*7*/   ["Czego boisz się najbardziej?", ["Czarnej wdowy chodzącej po mojej pościeli.", "Policji przy zjeździe z autostrady.", "Niczego!", "Dziewczynki z The Ring."]],
@@ -128,6 +128,50 @@ function loadQuestion(){
      });
   }
 
+    //Finish, score
+  if(position >= 5){
+
+    var dreamsArray = [counterDreamA, counterDreamB, counterDreamC, counterDreamD];
+    var newDreamsArray = dreamsArray.sort(function(a, b) {
+      return b - a;
+    });
+
+    if(newDreamsArray[0] == newDreamsArray[1]){ //Draw
+      alert("Wynik nie jest jednoznaczny, odpowiedz na dodatkowe pytanie.");
+    }else{  //Answer (dream) is clear
+
+      var myResult = function(){
+        //Choosing the dream
+        if(newDreamsArray[0] == counterDreamA){
+          result = '<h1>'+hiddenDreams[0].dream+'</h1><img class="narrowPicture" src='+hiddenDreams[0].image+' alt='+hiddenDreams[0].altText+'><p>'+hiddenDreams[0].youNeed+'</p>';
+        }else if(newDreamsArray[0] == counterDreamB){
+          result = '<h1>'+hiddenDreams[1].dream+'</h1><img src='+hiddenDreams[1].image+' alt='+hiddenDreams[1].altText+'><p>'+hiddenDreams[1].youNeed+'</p>';
+        }else if(newDreamsArray[0] == counterDreamC){
+          result = '<h1>'+hiddenDreams[2].dream+'</h1><img src='+hiddenDreams[2].image+' alt='+hiddenDreams[2].altText+'><p>'+hiddenDreams[2].youNeed+'</p>';
+        }else{
+          result = '<h1>'+hiddenDreams[3].dream+'</h1><img src='+hiddenDreams[3].image+' alt='+hiddenDreams[3].altText+'><p>'+hiddenDreams[3].youNeed+'</p>';
+        }
+        return result;
+      }
+
+      testStatus.innerHTML = "Twoje ukryte marzenie to...";
+
+      setTimeout(function(){
+        testStatus.style.display = "none";
+        play(finalSound);
+      }, 1000);
+
+      test.innerHTML = "<div class='finalDiv'>"+myResult()+"</div><button id='play-again' onclick='playAgain();play(clickSound)'>Zagraj ponownie</button>";
+      test.style.display = "none";
+
+      setTimeout(function(){
+        test.style.display = "block";
+      }, 1000);
+
+      return false;
+    }
+}
+
   //Random questions
   function lottery(){
     for (i=0; i<1; i++){
@@ -141,59 +185,16 @@ function loadQuestion(){
     }
   lottery();
 
-  //Finish, score
-  if(position >= 5){
-    var myResult = function(){
-      var dreamsArray = [counterDreamA, counterDreamB, counterDreamC, counterDreamD];
-      var newDreamsArray = dreamsArray.sort(function(a, b) {
-        return b - a;
-      });
-
-      console.log("A = "+counterDreamA+", B = "+counterDreamB+", C = "+counterDreamC+", D = "+counterDreamD+".");
-      console.log("newDreamsArray[0] = "+newDreamsArray[0]);
-      console.log("newDreamsArray[1] = "+newDreamsArray[1]);
-      console.log("newDreamsArray[2] = "+newDreamsArray[2]);
-      console.log("newDreamsArray[3] = "+newDreamsArray[3]);
-
-      //Choosing the dream
-      if(newDreamsArray[0] == counterDreamA){
-        result = '<h1>'+hiddenDreams[0].dream+'</h1><img class="narrowPicture" src='+hiddenDreams[0].image+' alt='+hiddenDreams[0].altText+'><p>'+hiddenDreams[0].youNeed+'</p>';
-      }else if(newDreamsArray[0] == counterDreamB){
-        result = '<h1>'+hiddenDreams[1].dream+'</h1><img src='+hiddenDreams[1].image+' alt='+hiddenDreams[1].altText+'><p>'+hiddenDreams[1].youNeed+'</p>';
-      }else if(newDreamsArray[0] == counterDreamC){
-        result = '<h1>'+hiddenDreams[2].dream+'</h1><img src='+hiddenDreams[2].image+' alt='+hiddenDreams[2].altText+'><p>'+hiddenDreams[2].youNeed+'</p>';
-      }else{
-        result = '<h1>'+hiddenDreams[3].dream+'</h1><img src='+hiddenDreams[3].image+' alt='+hiddenDreams[3].altText+'><p>'+hiddenDreams[3].youNeed+'</p>';
-      }
-      return result;
-    }
-
-    testStatus.innerHTML = "Twoje ukryte marzenie to...";
-
-    setTimeout(function(){
-      testStatus.style.display = "none";
-      play(finalSound);
-    }, 1000);
-
-    test.innerHTML = "<div class='finalDiv'>"+myResult()+"</div><button id='play-again' onclick='playAgain();play(clickSound)'>Zagraj ponownie</button>";
-    test.style.display = "none";
-
-    setTimeout(function(){
-      test.style.display = "block";
-    }, 1000);
-
-    return false;
-  }
-
-  //Counter of questions
-  testStatus.innerHTML = "<p>Pytanie "+(position+1)+" z 5</p>";
-
   //Connection
   var question = newQuestions[position][0];
-  optionA = newQuestions[position][1][0];
-  optionB= newQuestions[position][1][1];
-  optionC = newQuestions[position][1][2];
-  optionD = newQuestions[position][1][3];
+  var optionA = newQuestions[position][1][0];
+  var optionB= newQuestions[position][1][1];
+  var optionC = newQuestions[position][1][2];
+  var optionD = newQuestions[position][1][3];
+
+if(position<5){
+  //Counter of questions
+  testStatus.innerHTML = "<p>Pytanie "+(position+1)+" z 5</p>";
 
   //Body of test
   test.innerHTML = "<h3>"+question+"</h3>"+
@@ -203,6 +204,55 @@ function loadQuestion(){
     "<br><label><input type='radio' name='choices' value='C'>"+optionC+"</label>"+
     "<br><label><input type='radio' name='choices' value='D'>"+optionD+"</label>"+
   "</div><button onclick='checkAnswer();play(clickSound)'>Dalej</button>";
+}else{
+  var additionalOptionA = "<label><input type='radio' name='choices' value='A'>"+optionA+"</label>";
+  var additionalOptionB = "<label><input type='radio' name='choices' value='B'>"+optionB+"</label>";
+  var additionalOptionC = "<label><input type='radio' name='choices' value='C'>"+optionC+"</label>";
+  var additionalOptionD = "<label><input type='radio' name='choices' value='D'>"+optionD+"</label>";
+
+  function optionsOfLastQ1(){
+    if((newDreamsArray.indexOf(counterDreamA) == 0)||(newDreamsArray.indexOf(counterDreamA) == -1)){
+      result = "<br><label><input type='radio' name='choices' value='A'>"+optionA+"</label>"
+    }else{
+      result = "";
+    }
+    return result;
+  }
+
+  function optionsOfLastQ2(){
+    if((newDreamsArray.indexOf(counterDreamB) == 0)||(newDreamsArray.indexOf(counterDreamB) == -1)){
+      result = "<br><label><input type='radio' name='choices' value='B'>"+optionB+"</label>"
+    }else{
+      result = "";
+    }
+    return result;
+  }
+
+  function optionsOfLastQ3(){
+    if((newDreamsArray.indexOf(counterDreamC) == 0)||(newDreamsArray.indexOf(counterDreamC) == -1)){
+      result  = "<br><label><input type='radio' name='choices' value='C'>"+optionC+"</label>"
+    }else{
+      result = "";
+    }
+    return result;
+  }
+
+  function optionsOfLastQ4(){
+    if((newDreamsArray.indexOf(counterDreamD) == 0)||(newDreamsArray.indexOf(counterDreamD) == -1)){
+      result = "<br><label><input type='radio' name='choices' value='D'>"+optionD+"</label>"
+    }else{
+      result = "";
+    }
+    return result;
+  }
+  //Counter of questions
+  testStatus.innerHTML = "<p>Pytanie dodatkowe</p>";
+
+  //Body of the test
+  test.innerHTML = "<h3>"+question+"</h3>"+
+  '<div class="optionBox">'+optionsOfLastQ1()+optionsOfLastQ2()+optionsOfLastQ3()+optionsOfLastQ4()+
+  "</div><button onclick='checkAnswer();play(clickSound)'>Dalej</button>";
+  }
 }
 
 var choices = document.getElementsByName("choices");
